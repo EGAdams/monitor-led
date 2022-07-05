@@ -1,0 +1,37 @@
+{
+	"tags":
+	{
+		"allowUnknownTags" : true
+	},
+	"plugins":[
+		 "plugins/markdown"
+		,"/Users/EG/AppData/Roaming/nvm/v14.15.1/node_modules/tsdoc/template/plugins/TSDoc.js"
+	],
+	"opts":
+	{
+		"template"	:"/Users/EG/AppData/Roaming/nvm/v14.15.1/node_modules/tsdoc/template",
+		"recurse"	:"true"
+	},
+	"templates" : {
+		"cleverLinks"     : false,
+		"monospaceLinks"  : false
+	},
+	"source":
+	{
+		"includePattern": "(\\.d)?\\.ts$"
+	},
+	"markdown"  : {
+		"parser"   : "gfm",
+		"hardwrap" : true
+	},
+	"tsdoc":{
+		"source"		:"./src/typescript_source/",
+		"destination"	:"./src/typescript_source/docs",
+		"tutorials"		:"",
+		"systemName"	: "concrete",
+		"footer"		: "",
+		"copyright"		: "concrete Copyright © 2022 EG.",
+		"outputSourceFiles" : true,
+		"commentsOnly": true
+	}
+}
