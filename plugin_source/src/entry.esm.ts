@@ -1,7 +1,7 @@
 import { App, Plugin } from 'vue';
 
 // Import vue component
-import component from '@/log-vuer.vue';
+import component from '@/MonitorLed.vue';
 
 // Define typescript interfaces for installable component
 type InstallableComponent = typeof component & { install: Exclude<Plugin['install'], undefined> };
@@ -15,7 +15,7 @@ export default /*#__PURE__*/((): InstallableComponent => {
 
   // Attach install function executed by Vue.use()
   installable.install = (app: App) => {
-    app.component('LogVuer', installable);
+    app.component('MonitorLEd', installable);
   };
   return installable;
 })();

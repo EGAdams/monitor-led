@@ -1,12 +1,12 @@
 {
-  "name": "log-vuer",
+  "name": "monitor-led",
   "author": "EG Adams",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "",
-  "main": "dist/log-vuer.ssr.js",
-  "browser": "dist/log-vuer.esm.js",
-  "module": "dist/log-vuer.esm.js",
-  "unpkg": "dist/log-vuer.min.js",
+  "main": "dist/monitor-led.ssr.js",
+  "browser": "dist/monitor-led.esm.js",
+  "module": "dist/monitor-led.esm.js",
+  "unpkg": "dist/monitor-led.min.js",
   "types": "dist/types/src/entry.esm.d.ts",
   "files": [
     "dist/*",
