@@ -1,15 +1,8 @@
 {
     "cSpell.words": [
-        "cdrul",
-        "errmsg",
-        "hardwrap",
-        "logviewer",
-        "monospace",
-        "nsis",
-        "Promiseness",
-        "spectron",
-        "thispc",
-        "tsdoc",
-        "TTFB"
-    ]
+        "browserslist",
+        "ttypescript",
+        "zerollup"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
