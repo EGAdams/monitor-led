@@ -13,6 +13,11 @@
     "src/**/*.vue"
   ],
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EGAdams/monitor.git"
+  },
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.ts",
     "prebuild": "rimraf ./dist",

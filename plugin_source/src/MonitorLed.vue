@@ -32,8 +32,8 @@ export default defineComponent( {
     height: 0.8m;
     margin-top: 4px;
     padding: /* top */ 1px /* right */ 1px /* bottom */ 1px /* left */ 5px;
-    background-color: "monitor_led_data.classObject.background_color";
-    text-align: "monitor_led_data.classObject.text_align";
-    margin-top: "monitor_led_data.classObject.margin_top";
+    background-color: v-bind( "monitor_led_data.classObject.background_color" );
+    text-align: v-bind( "monitor_led_data.classObject.text_align" );
+    margin-top: v-bind( "monitor_led_data.classObject.margin_top" );
 }
 </style>
