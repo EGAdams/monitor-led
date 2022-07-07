@@ -9,12 +9,54 @@
 </head>
 
 <body>
-    <script type="module">
-        import MonitorLed from "./node_modules/monitor-led/dist/monitor-led.esm.js";
+    <script>
+        const thisLedData = {
+                ledText: "checking the server status...",
+                classObject: {
+                background_color: "yellow",
+                text_align: "left",
+                margin_top: "4px" 
+            }
+        };
     </script>
-    <div id="app">
-    <monitor-led></monitor-led>
+
+    <div id="section_1">
+        <monitor-led v-bind:monitor_led_data="monitor_led_data"></monitor-led>      
     </div>
+    <script>
+        const this_page_led_data = {
+            ledText: "checking the server status...",
+            classObject: {
+                background_color: "yellow",
+                text_align: "left",
+                margin_top: "4px" 
+            }
+        };
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+            "vue":        "https://unpkg.com/vue@3/dist/vue.esm-browser.js",      // Vue.js
+            "monitor-led": "./node_modules/monitor-led/dist/monitor-led.esm.js"   // monitor-led
+            }
+        }
+    </script>
+    <script type="module">
+        import ServerLedData from '../plugin_source/server_build/module/lib/ServerLedData.js';
+        import { createApp } from 'vue';
+        import MonitorLed from 'monitor-led';
+        const app = createApp( {
+            components: { MonitorLed },
+            mounted () { 
+                console.log( "led mounted." ); 
+            },
+            beforeMount () { 
+                console.log( "led beforeMount." ); 
+                this.monitor_led_data = this_page_led_data; 
+            },
+        });
+        app.mount( '#section_1' );
+    </script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@ export default defineComponent( {
     },
     data () {
         return {
-            object_view_id: "100",
+            monitor_led_data: {} as IMonitorLedData,
         };
     },
 } );

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "outDir": "./ts_out",
         "target": "esnext",
         "module": "esnext",
         "strict": true,
