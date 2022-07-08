@@ -7,7 +7,8 @@ class ServerLedData implements IMonitorLedData {
     classObject = {
         background_color: "yellow",
         text_align: "left",
-        margin_top: "4px" };
+        margin_top: "4px",
+        color: "black" };
 }
 
 export default ServerLedData;

@@ -35,5 +35,6 @@ export default defineComponent( {
     background-color: v-bind( "monitor_led_data.classObject.background_color" );
     text-align: v-bind( "monitor_led_data.classObject.text_align" );
     margin-top: v-bind( "monitor_led_data.classObject.margin_top" );
+    color: v-bind( "monitor_led_data.classObject.color" );
 }
 </style>
