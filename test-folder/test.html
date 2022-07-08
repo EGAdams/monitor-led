@@ -9,51 +9,75 @@
 </head>
 
 <body>
-    <script>
-        const thisLedData = {
-                ledText: "checking the server status...",
-                classObject: {
-                background_color: "yellow",
-                text_align: "left",
-                margin_top: "4px" 
-            }
-        };
-    </script>
 
     <div id="section_1">
-        <monitor-led v-bind:monitor_led_data="monitor_led_data"></monitor-led>      
+        <monitor-led v-bind:monitor_led_data="monitor_led_data"></monitor-led>
     </div>
     <script>
-        const this_page_led_data = {
+
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+                "vue":        "https://unpkg.com/vue@3/dist/vue.esm-browser.js",      // Vue.js
+                "monitor-led": "./node_modules/monitor-led/dist/monitor-led.esm.js"   // monitor-led
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { ref, createApp, reactive } from "vue";
+        import ServerLedData from '../plugin_source/server_build/module/lib/ServerLedData.js';
+        import MonitorLed from 'monitor-led';
+        let this_page_led_data = ref({
             ledText: "checking the server status...",
             classObject: {
                 background_color: "yellow",
                 text_align: "left",
                 margin_top: "4px" 
             }
-        };
-    </script>
-    <script type="importmap">
-        {
-            "imports": {
-            "vue":        "https://unpkg.com/vue@3/dist/vue.esm-browser.js",      // Vue.js
-            "monitor-led": "./node_modules/monitor-led/dist/monitor-led.esm.js"   // monitor-led
+        });
+        let thisLedData = {
+            ledText: "some failure...",
+            classObject: {
+                background_color: "orange",
+                text_align: "left",
+                margin_top: "4px"
             }
-        }
-    </script>
-    <script type="module">
-        import ServerLedData from '../plugin_source/server_build/module/lib/ServerLedData.js';
-        import { createApp } from 'vue';
-        import MonitorLed from 'monitor-led';
-        const app = createApp( {
+        };
+        const app = createApp({
             components: { MonitorLed },
-            mounted () { 
-                console.log( "led mounted." ); 
+            setup () {
+                const monitor_led_data = reactive({
+                    ledText: "checking the server status...",
+                    classObject: {
+                        background_color: "yellow",
+                        text_align: "left",
+                        margin_top: "4px"
+                    }
+                })
+                return {
+                    monitor_led_data
+                }
             },
-            beforeMount () { 
-                console.log( "led beforeMount." ); 
-                this.monitor_led_data = this_page_led_data; 
-            },
+            mounted() {
+                setTimeout(() => {
+                    console.table( thisLedData );
+                    this.monitor_led_data.classObject = thisLedData.classObject;
+                    this.monitor_led_data.ledText = thisLedData.ledText;
+                    
+                }, 2000);
+                
+            }
+            // data () {
+            //     return {
+            //         monitor_led_data: thisLedData
+            //     };
+            // }
+            // beforeMount () { 
+            //     console.log( "led beforeMount." ); 
+            //     this.monitor_led_data = thisLedData.value; 
+            // },
         });
         app.mount( '#section_1' );
     </script>

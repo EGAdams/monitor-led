@@ -17,12 +17,12 @@ export default defineComponent( {
             type: Object as PropType< IMonitorLedData >,
             default: () => ( {} ),
         },
-    },
-    data () {
-        return {
-            monitor_led_data: {} as IMonitorLedData,
-        };
-    },
+    }
+    // data () {
+    //     return {
+    //         monitor_led_data: {} as IMonitorLedData,
+    //     };
+    // },
 } );
 </script>
 
