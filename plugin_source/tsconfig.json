@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "jsx": "preserve",
         "outDir": "./ts_out",
         "target": "esnext",
         "module": "esnext",

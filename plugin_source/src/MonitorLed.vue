@@ -24,12 +24,8 @@ export default defineComponent( {
             default: ""
         }
     },
-    data: () => ({
-        monitor_led_data: new ServerLedData()
-    }),
-    mounted() {
-        this.start();
-    },
+    data: () => ({ monitor_led_data: new ServerLedData() }),
+    mounted() { this.start(); },
     methods: {
         start() {
             let dataSource = new DataSource( this.data_source_location );
@@ -61,6 +57,5 @@ export default defineComponent( {
     background-color: v-bind( "monitor_led_data.classObject.background_color" );
     text-align: v-bind( "monitor_led_data.classObject.text_align" );
     margin-top: v-bind( "monitor_led_data.classObject.margin_top" );
-    color: v-bind( "monitor_led_data.classObject.color" );
-}
+    color: v-bind( "monitor_led_data.classObject.color" ); }
 </style>
