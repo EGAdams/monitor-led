@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>led test</title>
 </head>
-
 <body>
-
     <div id="section_1">
         <monitor-led v-bind:monitor_led_data="monitor_led_data"></monitor-led>
     </div>
@@ -70,18 +67,8 @@
                 }, 2000);
                 
             }
-            // data () {
-            //     return {
-            //         monitor_led_data: thisLedData
-            //     };
-            // }
-            // beforeMount () { 
-            //     console.log( "led beforeMount." ); 
-            //     this.monitor_led_data = thisLedData.value; 
-            // },
         });
         app.mount( '#section_1' );
     </script>
 </body>
-
 </html>
