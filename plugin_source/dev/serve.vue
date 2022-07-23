@@ -1,5 +1,5 @@
 <script lang="ts">
-import ServerLedData from "../src/typescript_source/concrete/ServerLedData";
+
 import { defineComponent } from "vue";
 import MonitorLed from "../src/MonitorLed.vue";
 
@@ -10,8 +10,7 @@ export default defineComponent({
   },
   data() {
     return {
-      test_object_name: "monitor-led-tester",
-      monitor_led_data: new ServerLedData(),
+      object_id: "AnonymousIdentity_1655",
     };
   },
 });
@@ -19,6 +18,6 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <monitor-led v-bind:object_name="test_object_name" v-bind:monitor_led_data="monitor_led_data"></monitor-led>
+    <monitor-led v-bind:monitored_object_id="object_id"></monitor-led>
   </div>
 </template>
