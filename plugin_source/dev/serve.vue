@@ -11,6 +11,7 @@ export default defineComponent({
   data() {
     return {
       object_id: "AnonymousIdentity_1655",
+      url: "http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
     };
   },
 });
@@ -18,6 +19,6 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <monitor-led v-bind:monitored_object_id="object_id"></monitor-led>
+    <monitor-led v-bind:monitored_object_id="object_id" v-bind:data_source_location="url"></monitor-led>
   </div>
 </template>

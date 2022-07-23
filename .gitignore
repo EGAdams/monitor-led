@@ -2,3 +2,4 @@ test-folder/node_modules
 plugin_source/node_modules
 plugin_source/dist
 plugin_source/server_build/
+plugin_source/src/typescript_source/concrete/config/
