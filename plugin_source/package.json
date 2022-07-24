@@ -1,7 +1,7 @@
 {
   "name": "@egadams/monitor-led",
   "author": "EG Adams",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/monitor-led.ssr.js",
   "browser": "dist/monitor-led.esm.js",

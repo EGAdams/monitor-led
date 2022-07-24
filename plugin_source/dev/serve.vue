@@ -19,6 +19,7 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <monitor-led v-bind:monitored_object_id="object_id" v-bind:data_source_location="url"></monitor-led>
+    <monitor-led v-bind:monitored_object_id="object_id" 
+                 v-bind:data_source_location="url"></monitor-led>
   </div>
 </template>
