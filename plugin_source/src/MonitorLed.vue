@@ -31,7 +31,7 @@ export default defineComponent( {
         processSelectObjectResult( _event: any, result: any ) {
             let data = JSON.parse( result.data[ 0 ][ 0 ]);
             result.thisObject.monitor_led_data = data.monitorLedData;
-            const event_name = this.kebabize( "event-" + data.construction_name  + "-" + data.ID );
+            const event_name = "event-" + this.kebabize( data.construction_name ) + "-" + data.ID;
             let led_event = new CustomEvent( event_name, { bubbles: true, detail: data });
             document.dispatchEvent( led_event) ; }, // this.$emit( 'led-data', data.monitorLedData ); doesn't work! 
         
