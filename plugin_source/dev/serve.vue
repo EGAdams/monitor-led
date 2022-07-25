@@ -11,8 +11,8 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <div class="outside">outside element</div> 
-    <monitor-led monitored_object_id="AnonymousIdentity_1646"
+    <div class="anonymous-identity-1655">outside element</div> 
+    <monitor-led monitored_object_id="AnonymousIdentity_1655"
                  data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php">
     </monitor-led>
   </div>
