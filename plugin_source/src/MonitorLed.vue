@@ -11,39 +11,37 @@
 import jQuery from "jquery"
 import DataSource from "./typescript_source/concrete/DataSource";
 import ServerLedData from "../src/typescript_source/concrete/ServerLedData";
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent( {
     name: "monitor-led",    
     props: {
-        monitored_object_id: {
-            type: String as PropType< string >,
-            default: "",
-        },
-        data_source_location: {
-            type: String,
-            default: ""
-        }
-    },
+        monitored_object_id:  { type: String, default: "" },
+        data_source_location: { type: String, default: "" }},    
     data: () => ({ monitor_led_data: new ServerLedData() }),
     mounted() { this.start(); },
     methods: {
         start() {
             let dataSource = new DataSource( this.data_source_location );
             const dataQuery =  "select object_data from monitored_objects where object_view_id='" + this.monitored_object_id + "'";
-            const request_packet = {
-                thisObject: this,
-                query: dataQuery,
-                trigger: "processSelectObjectResult",
-                data: {}};
+            const request_packet = { thisObject: this, query: dataQuery, trigger: "processSelectObjectResult", data: {}};
             setInterval(() => {
-                console.log( "updating..." );
                 jQuery( document ).off().on( "processSelectObjectResult", request_packet.thisObject.processSelectObjectResult );
-                dataSource.runQuery( request_packet ); }, 1000 );
-        },
+                dataSource.runQuery( request_packet ); }, 1000 ); },
+
         processSelectObjectResult( _event: any, result: any ) {
             let data = JSON.parse( result.data[ 0 ][ 0 ]);
+            const kebab_name = this.kebabize( data.construction_name )
             result.thisObject.monitor_led_data = data.monitorLedData;
-        }
+
+            let led_event = new CustomEvent( kebab_name + "-" + data.ID, { bubbles: true, detail: data });
+            document.dispatchEvent( led_event) ; }, // this.$emit( 'led-data', data.monitorLedData ); doesn't work! 
+        
+        kebabize( str: string ) {
+            return str.split('').map((letter, idx) => {
+                return letter.toUpperCase() === letter
+                ? `${idx !== 0 ? '-' : ''}${letter.toLowerCase()}`
+                : letter;
+        }).join(''); }
     }
 });
 </script>

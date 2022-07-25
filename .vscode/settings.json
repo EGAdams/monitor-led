@@ -4,7 +4,8 @@
         "checkresult",
         "importmap",
         "ttypescript",
-        "zerollup"
+        "zerollup",
+        "kebabize"
     ],
     "typescript.tsdk": "node_modules/typescript/lib",
     "liveServer.settings.port": 5501

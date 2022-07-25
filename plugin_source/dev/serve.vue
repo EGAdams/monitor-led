@@ -5,21 +5,15 @@ import MonitorLed from "../src/MonitorLed.vue";
 
 export default defineComponent({
   name: "ServeDev",
-  components: {
-    MonitorLed,
-  },
-  data() {
-    return {
-      object_id: "AnonymousIdentity_1646",
-      url: "http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php"
-    };
-  },
+  components: { MonitorLed },
 });
 </script>
 
 <template>
   <div id="app">
-    <monitor-led v-bind:monitored_object_id="object_id" 
-                 v-bind:data_source_location="url"></monitor-led>
+    <div class="outside">outside element</div> 
+    <monitor-led monitored_object_id="AnonymousIdentity_1646"
+                 data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php">
+    </monitor-led>
   </div>
 </template>
