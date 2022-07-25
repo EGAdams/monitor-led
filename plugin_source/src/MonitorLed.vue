@@ -30,10 +30,9 @@ export default defineComponent( {
 
         processSelectObjectResult( _event: any, result: any ) {
             let data = JSON.parse( result.data[ 0 ][ 0 ]);
-            const kebab_name = this.kebabize( data.construction_name )
             result.thisObject.monitor_led_data = data.monitorLedData;
-
-            let led_event = new CustomEvent( kebab_name + "-" + data.ID, { bubbles: true, detail: data });
+            const event_name = this.kebabize( "event-" + data.construction_name  + "-" + data.ID );
+            let led_event = new CustomEvent( event_name, { bubbles: true, detail: data });
             document.dispatchEvent( led_event) ; }, // this.$emit( 'led-data', data.monitorLedData ); doesn't work! 
         
         kebabize( str: string ) {
