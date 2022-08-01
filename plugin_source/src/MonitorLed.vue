@@ -29,6 +29,7 @@ export default defineComponent( {
                 dataSource.runQuery( request_packet ); }, 1000 ); },
 
         processSelectObjectResult( _event: any, result: any ) {
+            if( result.data.length  == 0 || result.data[ 0 ][ 0 ] == 0 ) { return; }
             let data = JSON.parse( result.data[ 0 ][ 0 ]);
             result.thisObject.monitor_led_data = data.monitorLedData;
             const event_name = "event-" + this.kebabize( data.construction_name ) + "-" + data.ID;
