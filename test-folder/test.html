@@ -51,7 +51,7 @@
         };
         document.addEventListener( "led-data", function ( event ) {
             console.log( "led-data event: " + event.detail );
-            let outside_element = document.getElementById( "outside-element-" + event.detail.ID );
+            let outside_element = document.getElementById( "outside-element-" + event.detail.id );
             outside_element.style[ "background-color" ] = event.detail.monitorLedData.classObject.background_color;
 
         });

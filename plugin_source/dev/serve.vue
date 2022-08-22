@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 import MonitorLed from "../src/MonitorLed.vue";
 
 export default defineComponent({
-  name: "ServeDev",
+  name: "AccordionSection",
   components: { MonitorLed },
 });
 </script>
