@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts">
-import jQuery from "jquery"
-import DataSource from "./typescript_source/concrete/DataSource";
 import ServerLedData from "../src/typescript_source/concrete/ServerLedData";
+import FetchRunner from "../src/typescript_source/concrete/FetchRunner";
+import SourceData from "../src/typescript_source/concrete/SourceData";
+import Model from "../src/typescript_source/concrete/Model";
 import { defineComponent } from "vue";
 export default defineComponent( {
     name: "monitor-led",    
@@ -21,17 +22,14 @@ export default defineComponent( {
     mounted() { this.start(); },
     methods: {
         start() {
-            let dataSource = new DataSource( this.data_source_location );
-            const dataQuery =  "select object_data from monitored_objects where object_view_id='" + this.monitored_object_id + "'";
-            const request_packet = { thisObject: this, query: dataQuery, trigger: "processSelectObjectResult", data: {}};
-            setInterval(() => {
-                jQuery( document ).off().on( "processSelectObjectResult", request_packet.thisObject.processSelectObjectResult );
-                dataSource.runQuery( request_packet ); }, 1000 ); },
+            let source_query_config = { object_view_id: this.monitored_object_id, object_data: {}};
+            let model              = new Model( new SourceData({ Runner: FetchRunner, url: this.data_source_location }));
+            setInterval(() => { model.selectObject( source_query_config, this ); }, 1000 ); },
 
-        processSelectObjectResult( _event: any, result: any ) {
-            if( result.data.length  == 0 || result.data[ 0 ][ 0 ].length == 0 ) { return; }
-            let data = JSON.parse( result.data[ 0 ][ 0 ]);
-            result.thisObject.monitor_led_data = data.monitorLedData;
+        processQueryResult( query_result: any ) {
+            if( query_result.length  == 0 || query_result[ 0 ].length == 0 ) { return; }
+            let data = JSON.parse( query_result[ 0 ].object_data );
+            this.monitor_led_data = data.monitorLedData;
             const event_name = "event-" + this.kebabize( data.construction_name ) + "-" + data.object_id;
             let led_event = new CustomEvent( event_name, { bubbles: true, detail: data });
             document.dispatchEvent( led_event); }, // this.$emit( 'led-data', data.monitorLedData ); doesn't work! 
