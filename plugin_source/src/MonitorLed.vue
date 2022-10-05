@@ -27,8 +27,8 @@ export default defineComponent( {
             setInterval(() => { model.selectObject( source_query_config, this ); }, 1000 ); },
 
         processQueryResult( query_result: any ) {
-            if( query_result.length  == 0 || query_result[ 0 ].length == 0 ) { return; }
-            let data = JSON.parse( query_result[ 0 ].object_data );
+            if( !query_result || !query_result.object_data ) { return; }
+            let data = JSON.parse( query_result.object_data );
             this.monitor_led_data = data.monitorLedData;
             const event_name = "event-" + this.kebabize( data.construction_name ) + "-" + data.object_id;
             let led_event = new CustomEvent( event_name, { bubbles: true, detail: data });

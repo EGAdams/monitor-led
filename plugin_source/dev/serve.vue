@@ -9,11 +9,11 @@ export default defineComponent({
 });
 </script>
 
-<template>
+<template>c
   <div id="app">
     <div class="anonymous-identity-1655">outside element</div> 
     <monitor-led monitored_object_id="AnonymousIdentity_1655"
-                 data_source_location="http://mycustombusinessapp.com/wp-content/plugins/MCBA-Wordpress/runQuery.php">
+                 data_source_location="localhost:8080">
     </monitor-led>
   </div>
 </template>

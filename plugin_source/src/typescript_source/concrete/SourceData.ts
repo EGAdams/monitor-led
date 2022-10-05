@@ -34,7 +34,7 @@ export default class SourceData {
      * @param {function} callbackObject The callbackObject to fire upon retrieving data
      */
     selectObject( query_config: ISourceQueryConfig, callbackObject: IQueryResultProcessor ) {
-        const config = { api_path: this.url + "object/select" };
+        const config = { api_path: this.url + "object/select/" + query_config.object_view_id };
         const runner = new this.RunnerObject( config );
         const run_config = { type: "GET", object_view_id: query_config.object_view_id }
         runner.run( run_config, callbackObject.processQueryResult ); }
